@@ -5,19 +5,13 @@ exports.getTakimTakipListesi = async (req, res) => {
     
     //    const yachtType = req.query.type == null ? 'normal' :req.query.type;
     //     console.log(yachtType,"type backend");
-    if(req.user.role === "admin"){
+   
         const result = await TakimTakipListesi.find({});
         res.json({
             success: true,
             result
         })
-    }else{
-        const result = await TakimTakipListesi.find({}).select("-log");
-        res.json({
-            success: true,
-            result
-        })
-    }
+
      
     } catch (error) {
         console.log(error);
