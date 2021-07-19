@@ -42,6 +42,9 @@ const takimTakipSchema = new mongoose.Schema({
     guncelStok:{
         type:Number,
     },
+    log:{
+        type:Array
+    }
   
 
 });

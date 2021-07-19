@@ -48,5 +48,5 @@ exports.login = async (req,res) => {
     res
       .header("auth-token", token)
       .status(200)
-      .json({ token: token, id: user._id });
+      .json({ token: token, id: user._id,role:user.role,email:user.email });
 }
