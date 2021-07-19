@@ -43,7 +43,7 @@ const takimTakipSchema = new mongoose.Schema({
         type:Number,
     },
     log:{
-        type:Array
+        type:[String]
     }
   
 

@@ -79,7 +79,9 @@ exports.deleteTakimTakip = async (req, res) => {
 exports.updateTakimTakip = async (req, res) => {
     try {
         const updateData = req.body;
-
+        const data = await TakimTakipListesi.findByIdAndUpdate(req.params.id);
+        const log = `Eski Stok :${data.guncelStok} Yeni Stok: ${updateData.guncelStok}, ${new Date().toISOString()},Değişen Kişi : ${req.user.email}`;
+        updateData.log.push(oldResult)
         const result = await TakimTakipListesi.findByIdAndUpdate(req.params.id, updateData);
         res.json({
             result
