@@ -1,5 +1,6 @@
 const TakimTakipListesi = require('../model/TakimTakipListesi')
 const Hurda = require('../model/Hurda')
+
 exports.getTakimTakipListesi = async (req, res) => {
 
     try {
