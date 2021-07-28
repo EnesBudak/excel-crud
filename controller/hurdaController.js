@@ -1,4 +1,3 @@
-const TakimTakipListesi = require('../model/TakimTakipListesi')
 const Hurda = require('../model/Hurda')
 exports.getTakimTakipListesi = async (req, res) => {
 
@@ -7,7 +6,7 @@ exports.getTakimTakipListesi = async (req, res) => {
     //    const yachtType = req.query.type == null ? 'normal' :req.query.type;
     //     console.log(yachtType,"type backend");
    
-        const result = await TakimTakipListesi.find({});
+        const result = await Hurda.find({});
         res.json({
             success: true,
             result
@@ -20,26 +19,13 @@ exports.getTakimTakipListesi = async (req, res) => {
 }
 exports.createTakimTakipListesi = async (req, res) => {
     try {
-        if(req.body.type == 'Hurda'){
-            const takim = new TakimTakipListesi(req.body);
-            const hurda = new Hurda(req.body);
-                           await hurda.save();
-            const result = await takim.save()
-            res.json({
-                success: true,
-                msg:"Hurda olarakta eklendi!",
-                result
-            })
-           
-        }
-        else{
-            const takim = new TakimTakipListesi(req.body);
-            const result = await takim.save()
-            res.json({
-                success: true,
-                result
-            })
-        }
+
+        const takim = new Hurda(req.body);
+        const result = await takim.save()
+        res.json({
+            success: true,
+            result
+        })
        
     } catch (error) {
         console.log(error,error);
@@ -54,7 +40,7 @@ exports.getTakimTakip = async (req, res) => {
             id
         } = req.params;
         console.log(req.params,"paramss")
-        const result = await TakimTakipListesi.findById(id)
+        const result = await Hurda.findById(id)
         res.json({
             success: true,
             result
@@ -71,7 +57,7 @@ exports.deleteTakimTakip = async (req, res) => {
         const {
             id
         } = req.params;
-        const result = await TakimTakipListesi.findByIdAndRemove(id)
+        const result = await Hurda.findByIdAndRemove(id)
         res.json({
             success: true,
             result
@@ -87,10 +73,10 @@ exports.deleteTakimTakip = async (req, res) => {
 exports.updateTakimTakip = async (req, res) => {
     try {
         const updateData = req.body;
-        const data = await TakimTakipListesi.findByIdAndUpdate(req.params.id);
+        const data = await Hurda.findByIdAndUpdate(req.params.id);
         const log = `Eski Stok :${data.guncelStok} Yeni Stok: ${updateData.guncelStok}, ${new Date().toISOString()},Değişen Kişi : ${req.user.email}`;
         updateData.log.push(log)
-        const result = await TakimTakipListesi.findByIdAndUpdate(req.params.id, updateData);
+        const result = await Hurda.findByIdAndUpdate(req.params.id, updateData);
         res.json({
             result
         })
@@ -114,7 +100,7 @@ exports.modifyYacht = async (req, res) => {
         // })
 
         // res.json({result})
-        const result = await Yacht.findById(id);
+        const result = await Hurda.findById(id);
 
         const billion = 1_000;
         console.log(billion);

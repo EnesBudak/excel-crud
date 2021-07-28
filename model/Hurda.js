@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const takimTakipSchema = new mongoose.Schema({
+const hurdaSchema = new mongoose.Schema({
     seriNo: {
         type: String,
         min: 6,
@@ -45,12 +45,9 @@ const takimTakipSchema = new mongoose.Schema({
     log:{
         type:[String]
     },
-    type:{
-        type:String,
-        enum:['Hurda','Bilenecek']
-    }
+ 
   
 
 });
 
-module.exports = mongoose.model('TakimTakipListesi', takimTakipSchema);
+module.exports = mongoose.model('Hurda', hurdaSchema);

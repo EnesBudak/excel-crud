@@ -12,6 +12,10 @@ const takimListesiSchema = new mongoose.Schema({
     },
     takimAdeti: {
         type: Number,
+    },
+    takimCinsi:{
+        type:String,
+        enum : ['Matkap', 'Takma uç', 'Freze','Küre','Kılavuz','T çakı', 'Rayba', 'Pantograf', 'Gövde'],
     }
   
 
