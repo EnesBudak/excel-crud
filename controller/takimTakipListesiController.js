@@ -130,8 +130,10 @@ exports.updateTakimTakip = async (req, res) => {
             }) 
         }
         const log = `Eski Stok :${data.guncelStok} Yeni Stok: ${updateData.guncelStok}, ${new Date().toISOString()},Değişen Kişi : ${req.user.email}`;
-      
-        updateData.log.push(log)
+        if(updateData.log){
+
+            updateData.log.push(log)
+        }
         const result = await TakimTakipListesi.findByIdAndUpdate(req.params.id, updateData);
         res.json({
             result
