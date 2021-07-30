@@ -45,6 +45,10 @@ const bilenecekTakimSchema = new mongoose.Schema({
     log: {
         type: [String]
     },
+    type:{
+        type:String,
+        enum:['Bilenecek']
+    },
 });
 
 module.exports = mongoose.model('BilenecekTakim', bilenecekTakimSchema);

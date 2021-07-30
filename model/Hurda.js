@@ -45,6 +45,10 @@ const hurdaSchema = new mongoose.Schema({
     log:{
         type:[String]
     },
+    type:{
+        type:String,
+        enum:['Hurda']
+    }
 });
 
 module.exports = mongoose.model('Hurda', hurdaSchema);
