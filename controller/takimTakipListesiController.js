@@ -1,5 +1,6 @@
 const TakimTakipListesi = require('../model/TakimTakipListesi')
 const Hurda = require('../model/Hurda')
+const BilenecekTakim = require('../model/BilenecekTakim')
 
 exports.getTakimTakipListesi = async (req, res) => {
 
@@ -35,6 +36,8 @@ exports.createTakimTakipListesi = async (req, res) => {
         }
         else{
             const takim = new TakimTakipListesi(req.body);
+            const bilenecekTakim = new BilenecekTakim(req.body);
+                           await bilenecekTakim.save();
             const result = await takim.save()
             res.json({
                 success: true,
