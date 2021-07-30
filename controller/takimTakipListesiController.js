@@ -40,6 +40,7 @@ exports.createTakimTakipListesi = async (req, res) => {
                            await bilenecekTakim.save();
             const result = await takim.save()
             res.json({
+                msg:"Bilenecek olarakta eklendi!",
                 success: true,
                 result
             })
