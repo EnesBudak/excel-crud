@@ -45,9 +45,6 @@ const hurdaSchema = new mongoose.Schema({
     log:{
         type:[String]
     },
- 
-  
-
 });
 
 module.exports = mongoose.model('Hurda', hurdaSchema);
