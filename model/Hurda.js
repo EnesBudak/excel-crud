@@ -46,8 +46,7 @@ const hurdaSchema = new mongoose.Schema({
         type:[String]
     },
     type:{
-        type:String,
-        enum:['Hurda']
+        type:String
     }
 });
 

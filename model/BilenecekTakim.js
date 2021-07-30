@@ -46,8 +46,7 @@ const bilenecekTakimSchema = new mongoose.Schema({
         type: [String]
     },
     type:{
-        type:String,
-        enum:['Bilenecek']
+        type:String
     },
 });
 
