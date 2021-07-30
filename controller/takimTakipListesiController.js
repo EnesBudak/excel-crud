@@ -91,8 +91,19 @@ exports.deleteTakimTakip = async (req, res) => {
 exports.updateTakimTakip = async (req, res) => {
     try {
         const updateData = req.body;
-        const data = await TakimTakipListesi.findByIdAndUpdate(req.params.id);
+        const data = await TakimTakipListesi.findById(req.params.id);
+        if(data.type == "Hurda"){
+            await Hurda.findOneAndUpdate({
+                tanim:data.tanim
+            },updateData)
+        }
+        else{
+            await BilenecekTakim.findOneAndUpdate({
+                tanim:data.tanim
+            },updateData) 
+        }
         const log = `Eski Stok :${data.guncelStok} Yeni Stok: ${updateData.guncelStok}, ${new Date().toISOString()},Değişen Kişi : ${req.user.email}`;
+      
         updateData.log.push(log)
         const result = await TakimTakipListesi.findByIdAndUpdate(req.params.id, updateData);
         res.json({
@@ -100,6 +111,7 @@ exports.updateTakimTakip = async (req, res) => {
         })
 
     } catch (error) {
+        console.log(error,"error");
         res.json({
             error
         })
