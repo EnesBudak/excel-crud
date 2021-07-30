@@ -95,12 +95,38 @@ exports.updateTakimTakip = async (req, res) => {
         if(data.type == "Hurda"){
             await Hurda.findOneAndUpdate({
                 tanim:data.tanim
-            },updateData)
+            },{
+                guncelStok:data.guncelStok,
+                parcaNo:data.parcaNo,
+                seriNo:data.seriNo,
+                stoktaKalan:data.stoktaKalan,
+                takimCinsi:data.takimCinsi,
+                talepAdeti:data.talepAdeti,
+                talepEden:data.talepEden,
+                talepTarihi:data.talepTarihi,
+                teslimAdeti:data.teslimAdeti,
+                teslimTarihi:data.teslimTarihi,
+                toplamAdet:data.toplamAdet,
+                type:data.type
+            })
         }
         else{
             await BilenecekTakim.findOneAndUpdate({
                 tanim:data.tanim
-            },updateData) 
+            },{
+                guncelStok:data.guncelStok,
+                parcaNo:data.parcaNo,
+                seriNo:data.seriNo,
+                stoktaKalan:data.stoktaKalan,
+                takimCinsi:data.takimCinsi,
+                talepAdeti:data.talepAdeti,
+                talepEden:data.talepEden,
+                talepTarihi:data.talepTarihi,
+                teslimAdeti:data.teslimAdeti,
+                teslimTarihi:data.teslimTarihi,
+                toplamAdet:data.toplamAdet,
+                type:data.type
+            }) 
         }
         const log = `Eski Stok :${data.guncelStok} Yeni Stok: ${updateData.guncelStok}, ${new Date().toISOString()},Değişen Kişi : ${req.user.email}`;
       
