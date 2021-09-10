@@ -102,7 +102,7 @@ exports.updateTakimTakip = async (req, res) => {
         const updateData = req.body;
         console.log(updateData);
         const data = await TakimTakipListesi.findById(req.params.id);
-        if(updateData.type == "Hurda"){
+        if(updateData.type == "Hurda" && !updateData.typeUpdated){
             console.log("calisti",updateData);
           const hurda =   await new Hurda({
                 guncelStok:data.guncelStok,
@@ -120,6 +120,7 @@ exports.updateTakimTakip = async (req, res) => {
 
             })
             await hurda.save()
+            updateData.typeUpdated=true;
             // await Hurda.findOneAndUpdate({
             //     tanim:data.tanim
             // },{
@@ -137,7 +138,7 @@ exports.updateTakimTakip = async (req, res) => {
             //     type:data.type
             // })
         }
-        if(updateData.type == "Bilenecek"){
+        if(updateData.type == "Bilenecek" && !updateData.typeUpdated){
           const bilenecek =   await new BilenecekTakim({
                 guncelStok:data.guncelStok,
                 parcaNo:data.parcaNo,
@@ -153,6 +154,7 @@ exports.updateTakimTakip = async (req, res) => {
                 type:data.type
             })
             await bilenecek.save()
+            updateData.typeUpdated=true;
             // await BilenecekTakim.findOneAndUpdate({
             //     tanim:data.tanim
             // },{
@@ -170,7 +172,7 @@ exports.updateTakimTakip = async (req, res) => {
             //     type:data.type
             // }) 
         }
-        const log = `Eski Stok :${data.guncelStok} Yeni Stok: ${updateData.guncelStok}, ${new Date().toISOString()},Değişen Kişi : ${req.user.email}`;
+        const log = `Eski Stok :${data.guncelStok} Yeni Stok: ${updateData.guncelStok}, ${new Date().toISOString()},Değişen Kişi : ${req.user.email},Talep Eden:${updateData.talepEden}`;
         if(updateData.log){
 
             updateData.log.push(log)
