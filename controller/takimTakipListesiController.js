@@ -99,12 +99,44 @@ exports.deleteTakimTakip = async (req, res) => {
 
 exports.updateTakimTakip = async (req, res) => {
     try {
+        console.log("selamke");
         const updateData = req.body;
         const data = await TakimTakipListesi.findById(req.params.id);
         if(data.type == "Hurda"){
-            await Hurda.findOneAndUpdate({
-                tanim:data.tanim
-            },{
+            await new Hurda({
+                guncelStok:data.guncelStok,
+                parcaNo:data.parcaNo,
+                seriNo:data.seriNo,
+                stoktaKalan:data.stoktaKalan,
+                takimCinsi:data.takimCinsi,
+                talepAdeti:data.talepAdeti,
+                talepEden:data.talepEden,
+                talepTarihi:data.talepTarihi,
+                teslimAdeti:data.teslimAdeti,
+                teslimTarihi:data.teslimTarihi,
+                toplamAdet:data.toplamAdet,
+                type:data.type
+
+            })
+            // await Hurda.findOneAndUpdate({
+            //     tanim:data.tanim
+            // },{
+            //     guncelStok:data.guncelStok,
+            //     parcaNo:data.parcaNo,
+            //     seriNo:data.seriNo,
+            //     stoktaKalan:data.stoktaKalan,
+            //     takimCinsi:data.takimCinsi,
+            //     talepAdeti:data.talepAdeti,
+            //     talepEden:data.talepEden,
+            //     talepTarihi:data.talepTarihi,
+            //     teslimAdeti:data.teslimAdeti,
+            //     teslimTarihi:data.teslimTarihi,
+            //     toplamAdet:data.toplamAdet,
+            //     type:data.type
+            // })
+        }
+        if(data.type == "Bilenecek"){
+            await new BilenecekTakim({
                 guncelStok:data.guncelStok,
                 parcaNo:data.parcaNo,
                 seriNo:data.seriNo,
@@ -118,24 +150,22 @@ exports.updateTakimTakip = async (req, res) => {
                 toplamAdet:data.toplamAdet,
                 type:data.type
             })
-        }
-        else{
-            await BilenecekTakim.findOneAndUpdate({
-                tanim:data.tanim
-            },{
-                guncelStok:data.guncelStok,
-                parcaNo:data.parcaNo,
-                seriNo:data.seriNo,
-                stoktaKalan:data.stoktaKalan,
-                takimCinsi:data.takimCinsi,
-                talepAdeti:data.talepAdeti,
-                talepEden:data.talepEden,
-                talepTarihi:data.talepTarihi,
-                teslimAdeti:data.teslimAdeti,
-                teslimTarihi:data.teslimTarihi,
-                toplamAdet:data.toplamAdet,
-                type:data.type
-            }) 
+            // await BilenecekTakim.findOneAndUpdate({
+            //     tanim:data.tanim
+            // },{
+            //     guncelStok:data.guncelStok,
+            //     parcaNo:data.parcaNo,
+            //     seriNo:data.seriNo,
+            //     stoktaKalan:data.stoktaKalan,
+            //     takimCinsi:data.takimCinsi,
+            //     talepAdeti:data.talepAdeti,
+            //     talepEden:data.talepEden,
+            //     talepTarihi:data.talepTarihi,
+            //     teslimAdeti:data.teslimAdeti,
+            //     teslimTarihi:data.teslimTarihi,
+            //     toplamAdet:data.toplamAdet,
+            //     type:data.type
+            // }) 
         }
         const log = `Eski Stok :${data.guncelStok} Yeni Stok: ${updateData.guncelStok}, ${new Date().toISOString()},Değişen Kişi : ${req.user.email}`;
         if(updateData.log){
