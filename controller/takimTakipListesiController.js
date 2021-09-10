@@ -34,13 +34,21 @@ exports.createTakimTakipListesi = async (req, res) => {
             })
            
         }
-        else{
+        else if(req.body.type == 'Bilenecek'){
             const takim = new TakimTakipListesi(req.body);
             const bilenecekTakim = new BilenecekTakim(req.body);
                            await bilenecekTakim.save();
             const result = await takim.save()
             res.json({
                 msg:"Bilenecek olarakta eklendi!",
+                success: true,
+                result
+            })
+        }else{
+            const takim = new TakimTakipListesi(req.body);
+            const result = await takim.save()
+            res.json({
+                msg:"OGK olarak sadece takım takip listesine eklendi!",
                 success: true,
                 result
             })

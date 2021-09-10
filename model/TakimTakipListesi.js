@@ -47,7 +47,7 @@ const takimTakipSchema = new mongoose.Schema({
     },
     type:{
         type:String,
-        enum:['Hurda','Bilenecek']
+        enum:['Hurda','Bilenecek','OGK']
     },
     takimCinsi:{
         type:String,
