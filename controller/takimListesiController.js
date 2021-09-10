@@ -16,7 +16,8 @@ exports.getTakimListesi = async (req, res) => {
 }
 exports.createTakimListesi = async (req, res) => {
     try {
-
+        let data = req.body;
+        data.guncelStok = req.body.takimAdeti;
         const takim = new TakimListesi(req.body);
         const result = await takim.save()
         res.json({
