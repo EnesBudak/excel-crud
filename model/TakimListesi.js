@@ -5,29 +5,36 @@ const takimListesiSchema = new mongoose.Schema({
         type: Number,
     },
     seriNo: {
-        type: String
+        type: String,
+        default:'Girilmedi'
     },
     tanim: {
-        type: String
+        type: String,
+        default:'Girilmedi'
     },
     parcaNo: {
         type: String,
         min: 6,
-        max: 255
+        max: 255,
+        default:'Girilmedi'
     },
     talepEden: {
         type: String,
         min: 6,
-        max: 255
+        max: 255,
+        default:'Girilmedi'
     },
     toplamAdet: {
         type: Number,
+        default:0
     },
     talepAdeti: {
-        type: Number
+        type: Number,
+        default:0
     },
     stoktaKalan: {
-        type: Number
+        type: Number,
+        default:0
     },
     talepTarihi:{
         type:Date,
@@ -40,6 +47,7 @@ const takimListesiSchema = new mongoose.Schema({
     },
     guncelStok:{
         type:Number,
+        default:0
     },
     log:{
         type:[String]
@@ -50,6 +58,7 @@ const takimListesiSchema = new mongoose.Schema({
     },
     takimAdeti: {
         type: Number,
+        default:0
     },
     takimCinsi:{
         type:String,
