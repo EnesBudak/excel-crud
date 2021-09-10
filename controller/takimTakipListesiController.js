@@ -1,4 +1,4 @@
-const TakimTakipListesi = require('../model/TakimTakipListesi')
+const TakimTakipListesi = require('../model/TakimListesi')
 const Hurda = require('../model/Hurda')
 const BilenecekTakim = require('../model/BilenecekTakim')
 
@@ -9,7 +9,7 @@ exports.getTakimTakipListesi = async (req, res) => {
     //    const yachtType = req.query.type == null ? 'normal' :req.query.type;
     //     console.log(yachtType,"type backend");
    
-        const result = await TakimTakipListesi.find({});
+        const result = await TakimTakipListesi.find({}).select('-takimAdeti -takimCinsi -tanim -seriNo');
         res.json({
             success: true,
             result

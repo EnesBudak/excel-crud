@@ -5,7 +5,7 @@ exports.getTakimListesi = async (req, res) => {
     
     //    const yachtType = req.query.type == null ? 'normal' :req.query.type;
     //     console.log(yachtType,"type backend");
-        const result = await TakimListesi.find({});
+        const result = await TakimListesi.find({}).select('siraNo takimAdeti takimCinsi tanim seriNo');
         res.json({
             success: true,
             result
