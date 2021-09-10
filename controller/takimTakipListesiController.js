@@ -99,11 +99,12 @@ exports.deleteTakimTakip = async (req, res) => {
 
 exports.updateTakimTakip = async (req, res) => {
     try {
-        console.log("selamke");
         const updateData = req.body;
+        console.log(updateData);
         const data = await TakimTakipListesi.findById(req.params.id);
-        if(data.type == "Hurda"){
-            await new Hurda({
+        if(updateData.type == "Hurda"){
+            console.log("calisti",updateData);
+          const hurda =   await new Hurda({
                 guncelStok:data.guncelStok,
                 parcaNo:data.parcaNo,
                 seriNo:data.seriNo,
@@ -118,6 +119,7 @@ exports.updateTakimTakip = async (req, res) => {
                 type:data.type
 
             })
+            await hurda.save()
             // await Hurda.findOneAndUpdate({
             //     tanim:data.tanim
             // },{
@@ -135,8 +137,8 @@ exports.updateTakimTakip = async (req, res) => {
             //     type:data.type
             // })
         }
-        if(data.type == "Bilenecek"){
-            await new BilenecekTakim({
+        if(updateData.type == "Bilenecek"){
+          const bilenecek =   await new BilenecekTakim({
                 guncelStok:data.guncelStok,
                 parcaNo:data.parcaNo,
                 seriNo:data.seriNo,
@@ -150,6 +152,7 @@ exports.updateTakimTakip = async (req, res) => {
                 toplamAdet:data.toplamAdet,
                 type:data.type
             })
+            await bilenecek.save()
             // await BilenecekTakim.findOneAndUpdate({
             //     tanim:data.tanim
             // },{
