@@ -105,20 +105,21 @@ exports.updateTakimTakip = async (req, res) => {
         if(updateData.type == "Hurda"){
             console.log("calisti",updateData);
           const hurda =   await new Hurda({
-                guncelStok:data.guncelStok,
-                parcaNo:data.parcaNo,
-                seriNo:data.seriNo,
-                stoktaKalan:data.stoktaKalan,
-                takimCinsi:data.takimCinsi,
-                talepAdeti:data.talepAdeti,
-                talepEden:data.talepEden,
-                talepTarihi:data.talepTarihi,
-                teslimAdeti:data.teslimAdeti,
-                teslimTarihi:data.teslimTarihi,
-                toplamAdet:data.toplamAdet,
-                type:data.type
+                guncelStok:updateData.guncelStok,
+                parcaNo:updateData.parcaNo,
+                seriNo:updateData.seriNo,
+                stoktaKalan:updateData.stoktaKalan,
+                takimCinsi:updateData.takimCinsi,
+                talepAdeti:updateData.talepAdeti,
+                talepEden:updateData.talepEden,
+                talepTarihi:updateData.talepTarihi,
+                teslimAdeti:updateData.teslimAdeti,
+                teslimTarihi:updateData.teslimTarihi,
+                toplamAdet:updateData.toplamAdet,
+                type:updateData.type
 
             })
+            console.log(hurda,"hurdam");
             await hurda.save()
             // await Hurda.findOneAndUpdate({
             //     tanim:data.tanim
@@ -139,18 +140,18 @@ exports.updateTakimTakip = async (req, res) => {
         }
         if(updateData.type == "Bilenecek"){
           const bilenecek =   await new BilenecekTakim({
-                guncelStok:data.guncelStok,
-                parcaNo:data.parcaNo,
-                seriNo:data.seriNo,
-                stoktaKalan:data.stoktaKalan,
-                takimCinsi:data.takimCinsi,
-                talepAdeti:data.talepAdeti,
-                talepEden:data.talepEden,
-                talepTarihi:data.talepTarihi,
-                teslimAdeti:data.teslimAdeti,
-                teslimTarihi:data.teslimTarihi,
-                toplamAdet:data.toplamAdet,
-                type:data.type
+                guncelStok:updateData.guncelStok,
+                parcaNo:updateData.parcaNo,
+                seriNo:updateData.seriNo,
+                stoktaKalan:updateData.stoktaKalan,
+                takimCinsi:updateData.takimCinsi,
+                talepAdeti:updateData.talepAdeti,
+                talepEden:updateData.talepEden,
+                talepTarihi:updateData.talepTarihi,
+                teslimAdeti:updateData.teslimAdeti,
+                teslimTarihi:updateData.teslimTarihi,
+                toplamAdet:updateData.toplamAdet,
+                type:updateData.type
             })
             await bilenecek.save()
             // await BilenecekTakim.findOneAndUpdate({
